@@ -1,0 +1,17 @@
+<section class="section">
+  <div class="container" >
+    <h1 class="title">Posts</h1>
+    <br>
+    <nav class="is-info">
+      <div class="navbar-end">
+        <div class="field is-grouped">
+          <p class="control"><%= link_to "New Post", new_post_path, class: "navbar-item" %></p>
+          <p class="control"><%= link_to "Home", root_path, class: "navbar-item" %></p>
+        </div>
+      </div>
+    </nav>
+    <div class="columns">
+      <%= render 'feed' %>
+    </div>
+  </div>
+</section>
