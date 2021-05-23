@@ -1,15 +1,21 @@
 <section class="section">
   <div class="container" >
-    <h1 class="title">Posts</h1>
-    <br>
-    <nav class="is-info">
-      <div class="navbar-end">
-        <div class="field is-grouped">
-          <p class="control"><%= link_to "New Post", new_post_path, class: "navbar-item" %></p>
-          <p class="control"><%= link_to "Home", root_path, class: "navbar-item" %></p>
+    <% if user_signed_in? %>
+      <article class="media">
+        <div class="media-left">
+          <figure class="image is-64x64">
+            <%= gravatar_image_tag(current_user.email, size: 64, alt: current_user.name) %>
+          </figure>
         </div>
-      </div>
-    </nav>
+        <div class="media-content">
+          <div class="content">
+            <strong><%= current_user.name %></strong><br />
+          </div>
+        </div>
+      </article>
+    <% end %>
+    <br>
+    <h1 class="title">Posts</h1>
     <div class="columns">
       <%= render 'feed' %>
     </div>
