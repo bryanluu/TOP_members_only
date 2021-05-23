@@ -4,12 +4,20 @@
       <article class="media">
         <div class="media-left">
           <figure class="image is-64x64">
-            <%= gravatar_image_tag(post.user.email, size: 64, alt: post.user.name) %>
+            <% if user_signed_in? %>
+              <%= gravatar_image_tag(post.user.email, size: 64, alt: post.user.name) %>
+            <% else %>
+              <%= gravatar_image_tag("anonymous@gmail.com", size: 64, alt: "Anonymous #{post.user.id}") %>
+            <% end %>
           </figure>
         </div>
         <div class="media-content">
           <div class="content">
-            <strong><%= post.user.name %></strong><br />
+            <% if user_signed_in? %>
+              <strong><%= post.user.name %></strong><br />
+            <% else %>
+              <strong><%= "Anonymous #{post.user.id}" %></strong><br />
+            <% end %>
             <p><%= post.body %></p>
           </div>
         </div>
